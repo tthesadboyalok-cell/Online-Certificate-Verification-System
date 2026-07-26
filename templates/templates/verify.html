@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% if cert_data %}
+            <div class="status-badge success">✓ CERTIFICATE VERIFIED</div>
+            <h3>Certificate Details</h3>
+            <div class="details">
+                <p><strong>Certificate ID:</strong> {{ cert_id }}</p>
+                <p><strong>Student Name:</strong> {{ cert_data.student_name }}</p>
+                <p><strong>Course/Domain:</strong> {{ cert_data.course }}</p>
+                <p><strong>Issue Date:</strong> {{ cert_data.issue_date }}</p>
+                <p><strong>Grade:</strong> {{ cert_data.grade }}</p>
+            </div>
+        {% else %}
+            <div class="status-badge error">✗ INVALID CERTIFICATE</div>
+            <p>No valid record found for ID: <strong>{{ cert_id }}</strong></p>
+        {% endif %}
+
+        <br>
+        <a href="/" class="back-btn">← Verify Another Certificate</a>
+    </div>
+</body>
+</html>
